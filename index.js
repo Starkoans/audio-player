@@ -3,6 +3,7 @@ const playBtn = document.querySelector('.play-btn');
 const prevBtn = document.querySelector('#prev-btn');
 const nextBtn = document.querySelector('#next-btn');
 const clipsBtn = document.querySelector('.clips');
+const clipsBtnText = document.querySelector('.btn-clips-text');
 const volumeBtn = document.querySelector('#volume-btn');
 
 const timer = document.querySelector('#timer');
@@ -71,7 +72,7 @@ const tracks = [
 	},
 	{
 		title: 'Too Cool To Be Careless',
-		cover: '',
+		cover: './assets/kid-dancing.gif',
 		album: './assets/pawsa.jpg',
 		author: 'PAWSA',
 		src: './assets/PAWSA_TooCoolToBeCareless.mp3',
@@ -97,7 +98,7 @@ let isPlay = false;
 let currentTime = 0;
 let currentVolume = 0.75;
 let isMute = false;
-let isClipsPlay = false;
+let isClipsPlay = true;
 let duration = 0;
 
 function loadTrack(index) {
@@ -108,8 +109,14 @@ function loadTrack(index) {
 	timerBar.style.width = '0%';
 	title.innerHTML = tracks[index].title;
 	author.innerHTML = tracks[index].author;
+
 	if (isClipsPlay) {
-		back.style.backgroundImage = `url(${tracks[index].cover})`;
+		let img = new Image();
+		img.src = tracks[index].cover;
+		img.onload = () => {
+			console.log('img');
+			back.style.backgroundImage = `url(${img.src})`;
+		};
 	}
 
 	const containerWidth = authorWrapper.offsetWidth;
@@ -120,8 +127,9 @@ function loadTrack(index) {
 		author.classList.remove('animated-textscroll');
 	}
 }
-document.addEventListener('DOMContentLoaded', function () {
 
+document.addEventListener('DOMContentLoaded', function () {
+	clipsBtnText.textContent = 'Stop clips';
 	loadTrack(currentTrackIndex);
 	audio.volume = currentVolume;
 	volumeBtn.innerHTML = volumeIcon;
@@ -139,11 +147,9 @@ function handlePlayPause() {
 		cover.classList.remove('rotated');
 		audio.pause();
 	}
-
 }
 
 function handlePrevTrack() {
-
 	if (currentTrackIndex > 0) {
 		currentTrackIndex--;
 		loadTrack(currentTrackIndex);
@@ -169,16 +175,16 @@ function handleNextTrack() {
 function handlePlayClips() {
 	if (isClipsPlay) {
 		back.style.backgroundImage = `url()`;
-		clipsBtn.innerHTML='Play clips';
+		clipsBtnText.innerHTML = 'Play clips';
 		isClipsPlay = false;
 	} else {
 		back.style.backgroundImage = `url(${tracks[currentTrackIndex].cover})`;
-		clipsBtn.innerHTML='Stop clips';
+		clipsBtnText.innerHTML = 'Stop clips';
 		isClipsPlay = true;
 	}
 }
 
-clipsBtn.addEventListener('click', handlePlayClips)
+clipsBtn.addEventListener('click', handlePlayClips);
 
 function formatTime(seconds) {
 	const minutes = Math.floor(seconds / 60);

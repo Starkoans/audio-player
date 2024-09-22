@@ -1,6 +1,6 @@
 body {
-    margin:0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 	font-family: 'Noto Sans Display', sans-serif;
 	display: flex;
 	flex-direction: column;
@@ -9,8 +9,9 @@ body {
 	min-height: 100dvh;
 	background-color: rgb(44, 44, 44);
 	color: aliceblue;
-    overflow: hidden;
+	overflow: hidden;
 }
+
 .back {
 	position: relative;
 	display: flex;
@@ -21,22 +22,39 @@ body {
 	min-width: 100dvw;
 	background-size: cover; /* Масштабируем изображение, чтобы оно полностью покрывало блок */
 	background-position: center;
-    justify-content: space-around;
+	justify-content: space-around;
 }
 
 button {
 	all: unset;
 	display: flex;
 }
-.clips{
-    margin-top: 20px;
+.clips {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-self: center;
+	margin: 20px auto 0 auto;
+	padding: 5px 10px;
+	border-radius: 20px;
+	width: fit-content;
+	gap: 7px;
+	background-color: aliceblue;
+	color: rgb(167, 89, 240);
+	transition: color 0.5s ease-in-out;
 }
-a{
-    text-decoration: none;
-    color:aliceblue
+
+.clips:hover {
+	background-color: rgb(167, 89, 240);
+	color: aliceblue;
 }
-a:hover{
-    text-decoration: underline;
+a {
+	text-decoration: none;
+	color: aliceblue;
+}
+a:hover {
+	text-decoration: underline;
 }
 p {
 	margin: 0;
@@ -50,6 +68,7 @@ p {
 	display: grid;
 }
 .btn {
+	display: flex;
 	transition: color 0.3s ease-in-out;
 	align-items: center;
 	justify-content: center;
@@ -63,7 +82,7 @@ p {
 	border-radius: 100%;
 	padding: 10px;
 	color: rgb(167, 89, 240);
-	background-color:  aliceblue;
+	background-color: aliceblue;
 	transition: background-color 0.3s ease-in-out;
 }
 .btn-primary:hover {
@@ -180,24 +199,23 @@ p {
 #cover {
 	height: 300px;
 	width: 300px;
-	background-color: chartreuse;
+	background-color: rgb(66, 66, 66);
 }
 
-footer{
-    display: flex;
-    justify-self: end;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+footer {
+	display: flex;
+	justify-self: end;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
 }
-.logo-rss{
-    cursor: pointer;
-    width: 50px; /* Задайте ширину */
-    height: 50px; /* Задайте высоту */
-    background-image: url('./assets/rss-logo.svg');
-    background-size: cover; /* Масштабирование изображения */
-    background-position: center; /* Центрирование изображения */
-    display: inline-block; /* Чтобы элемент вел себя как встроенный блок */
-    text-decoration: none;
-    
+.logo-rss {
+	cursor: pointer;
+	width: 50px; /* Задайте ширину */
+	height: 50px; /* Задайте высоту */
+	background-image: url('./assets/rss-logo.svg');
+	background-size: cover; /* Масштабирование изображения */
+	background-position: center; /* Центрирование изображения */
+	display: inline-block; /* Чтобы элемент вел себя как встроенный блок */
+	text-decoration: none;
 }
